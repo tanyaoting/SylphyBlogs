@@ -64,32 +64,6 @@ a:hover {
   padding: 0 1.25rem;
 }
 
-/* ---------- header ---------- */
-
-.site-header {
-  border-bottom: 1px solid var(--border);
-}
-
-.site-header .wrap {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: 4rem;
-}
-
-.brand {
-  font-size: 1.0625rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-  color: var(--fg);
-}
-
-.brand:hover {
-  text-decoration: none;
-  color: var(--accent);
-}
-
 main {
   flex: 1 0 auto;
   padding: 3rem 0 4rem;
@@ -105,42 +79,17 @@ main {
   padding: 1.5rem 1.25rem;
 }
 
-/* ---------- theme toggle ---------- */
+/* ---------- 内页通用标题 ---------- */
 
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--bg-soft);
-  color: var(--fg);
-  cursor: pointer;
-  transition: border-color 0.15s ease;
+.page-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
-}
-
-.theme-toggle svg {
-  width: 1.0625rem;
-  height: 1.0625rem;
-}
-
-.theme-toggle .icon-moon {
-  display: none;
-}
-
-html[data-theme='dark'] .theme-toggle .icon-sun {
-  display: none;
-}
-
-html[data-theme='dark'] .theme-toggle .icon-moon {
-  display: block;
+.page-intro {
+  margin: 0 0 2.5rem;
+  color: var(--fg-muted);
 }
 
 /* ---------- home ---------- */
