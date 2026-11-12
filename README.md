@@ -62,6 +62,12 @@ draft: true
 
 当前五项：首页 `/`（欢迎页）、博客 `/blog`、归档 `/archive`、标签 `/tags`、关于 `/about`。
 
+## 欢迎页背景
+
+背景图在 `public/images/hero.jpg`（1800×1237，341 KB），由 `index.astro` 的 `.hero` 引用：满宽出血（`margin: -3rem calc(50% - 50vw) 0`）、高度 `calc(100vh - 4rem)`、`background-size: cover`。
+
+左侧渐隐遮罩是 `.hero::before` 的横向渐变，亮暗各一套；底部 `.hero::after` 用 `7rem` 渐变融进页面背景。换图直接替换同名文件，保持横向构图即可。
+
 ## 主题与代码高亮
 
 - 亮暗主题由 `<html data-theme>` 控制，切换结果存 `localStorage`，首次访问跟随系统 `prefers-color-scheme`。
@@ -74,4 +80,5 @@ draft: true
 <!-- [claudecode 2026-11-12] 替换脚手架自带 README，改为本项目说明 -->
 <!-- [claudecode 2026-11-12] 补充顶部导航配置说明与 lib/nav.ts 目录项 -->
 <!-- [claudecode 2026-11-12] 补充归档/标签/关于三个页面与当前导航项说明 -->
+<!-- [claudecode 2026-11-12] 补充欢迎页背景图说明 -->
 <!-- [claudecode 2026-11-12] 首页改为欢迎页，文章列表迁至 /blog 并新增导航项 -->

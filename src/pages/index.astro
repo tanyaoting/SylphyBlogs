@@ -4,23 +4,76 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="SylphyBlogs" description="记录技术、阅读与思考。">
   <section class="hero">
-    <p class="eyebrow">Welcome</p>
-    <h1>你好，我是 Sylphy</h1>
-    <p class="lead">
-      这里记录技术笔记、阅读摘录，以及一些没想清楚的碎片。文章写在本地 Markdown
-      里，构建时生成纯静态页面。
-    </p>
-    <div class="cta">
-      <a class="btn btn-primary" href="/blog">进入博客</a>
-      <a class="btn" href="/about">关于我</a>
+    <div class="hero-inner">
+      <p class="eyebrow">Welcome</p>
+      <h1>你好，我是 Sylphy</h1>
+      <p class="lead">
+        这里记录技术笔记、阅读摘录，以及一些没想清楚的碎片。文章写在本地 Markdown
+        里，构建时生成纯静态页面。
+      </p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/blog">进入博客</a>
+        <a class="btn" href="/about">关于我</a>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  /* 满宽出血：抵消 .wrap 的左右内边距与 main 的上内边距 */
   .hero {
-    max-width: 38rem;
-    padding: 4rem 0 2rem;
+    position: relative;
+    isolation: isolate;
+    margin: -3rem calc(50% - 50vw) 0;
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    align-items: flex-end;
+    background: url('/images/hero.jpg') center 35% / cover no-repeat;
+    background-color: var(--bg-soft);
+    overflow: hidden;
+  }
+
+  /* 左侧渐隐遮罩，保证文字可读 */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+      100deg,
+      rgba(252, 252, 250, 0.92) 6%,
+      rgba(252, 252, 250, 0.78) 34%,
+      rgba(252, 252, 250, 0.4) 60%,
+      rgba(252, 252, 250, 0.05) 90%
+    );
+  }
+
+  /* 底边融入页面背景 */
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 7rem;
+    z-index: -1;
+    background: linear-gradient(180deg, transparent, var(--bg));
+    pointer-events: none;
+  }
+
+  :global(html[data-theme='dark']) .hero::before {
+    background: linear-gradient(
+      100deg,
+      rgba(20, 20, 19, 0.96) 6%,
+      rgba(20, 20, 19, 0.86) 34%,
+      rgba(20, 20, 19, 0.5) 58%,
+      rgba(20, 20, 19, 0.1) 88%
+    );
+  }
+
+  .hero-inner {
+    width: 100%;
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 4rem 1.25rem 6rem;
   }
 
   .eyebrow {
@@ -37,11 +90,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: clamp(2rem, 4vw, 2.75rem);
     line-height: 1.25;
     letter-spacing: -0.03em;
+    text-shadow: 0 1px 0 var(--bg);
   }
 
   .lead {
+    max-width: 34rem;
     margin: 0 0 2.5rem;
-    color: var(--fg-muted);
+    color: var(--fg);
+    opacity: 0.85;
     font-size: 1.0625rem;
   }
 
