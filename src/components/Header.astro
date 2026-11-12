@@ -1,0 +1,12 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const { siteTitle } = Astro.props as { siteTitle: string };
+---
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">{siteTitle}</a>
+    <ThemeToggle />
+  </div>
+</header>

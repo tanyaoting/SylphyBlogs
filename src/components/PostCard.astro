@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, toISODate } from '../lib/date';
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
+const { title, description, pubDate, tags } = post.data;
+---
+
+<li class="post-card">
+  <h2><a href={`/blog/${post.id}/`}>{title}</a></h2>
+  <p>{description}</p>
+  <div class="meta">
+    <time datetime={toISODate(pubDate)}>{formatDate(pubDate)}</time>
+    {tags.map((tag) => <span class="tag">{tag}</span>)}
+  </div>
+</li>
