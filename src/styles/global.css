@@ -8,7 +8,7 @@
   --accent: #0f766e;
   --code-bg: #f4f3ef;
   --radius: 10px;
-  --measure: 44rem;
+  --measure: 56rem;
 }
 
 html[data-theme='dark'] {
@@ -92,18 +92,7 @@ main {
   color: var(--fg-muted);
 }
 
-/* ---------- home ---------- */
-
-.intro h1 {
-  margin: 0 0 0.5rem;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
-}
-
-.intro p {
-  margin: 0 0 2.5rem;
-  color: var(--fg-muted);
-}
+/* ---------- 文章列表 ---------- */
 
 .post-list {
   list-style: none;
