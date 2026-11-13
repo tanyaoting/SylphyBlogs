@@ -9,6 +9,14 @@
   --code-bg: #f4f3ef;
   --radius: 10px;
   --measure: 56rem;
+  --header-measure: 72rem;
+  --header-height: 4rem;
+  --header-height-compact: 3.25rem;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-display: 'ZCOOL KuaiLe', var(--font-sans);
+  --title-gradient: linear-gradient(100deg, #db2777 0%, #7c3aed 48%, #0d9488 100%);
 }
 
 html[data-theme='dark'] {
@@ -20,6 +28,7 @@ html[data-theme='dark'] {
   --border: #2a2a26;
   --accent: #5eead4;
   --code-bg: #1c1c19;
+  --title-gradient: linear-gradient(100deg, #f9a8d4 0%, #c4b5fd 48%, #5eead4 100%);
 }
 
 *,
@@ -36,15 +45,42 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
-    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+/* 标题用手写体，正文保持系统无衬线，保证长文可读 */
+.brand-text,
+.page-title,
+.article-header h1,
+.hero h1,
+.prose h1,
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* 一级标题走渐变字（粉 → 紫 → 青），h2 保持正文色避免整页太花 */
+.brand-text,
+.page-title,
+.article-header h1,
+.hero h1,
+.prose h1 {
+  width: fit-content;
+  max-width: 100%;
+  background-image: var(--title-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 a {
